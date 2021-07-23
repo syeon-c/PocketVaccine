@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserApiController {
     private final UserService userService;
 
-    @PostMapping("/api/v1/users")
+    @PostMapping("/api/v1/users/join")
     public CreateUserResponse saveUser(@RequestBody User user) {
         String id = userService.join(user);
         return new CreateUserResponse(id);

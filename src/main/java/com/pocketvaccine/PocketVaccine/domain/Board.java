@@ -9,6 +9,6 @@ public class Board {
     private Long boardNo;
     private String title;
     private String content;
-    private int vaccineNo;
+    private String vaccineType;
 
 }
