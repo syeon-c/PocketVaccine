@@ -1,6 +1,6 @@
 package com.pocketvaccine.PocketVaccine.repository;
 
-import com.pocketvaccine.PocketVaccine.domain.User;
+import com.pocketvaccine.PocketVaccine.domain.entity.User;
 
 import java.util.List;
 import java.util.Optional;

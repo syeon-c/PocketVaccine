@@ -1,20 +1,25 @@
 package com.pocketvaccine.PocketVaccine.service;
 
-import com.pocketvaccine.PocketVaccine.domain.Board;
+import com.pocketvaccine.PocketVaccine.domain.entity.Board;
 import com.pocketvaccine.PocketVaccine.repository.BoardRepository;
-import com.pocketvaccine.PocketVaccine.repository.MemoryBoardRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class BoardService {
-    private final BoardRepository boardRepository = new MemoryBoardRepository();
+    final BoardRepository boardRepository;
 
-    public Long upload(Board board) {
+    @Transactional
+    public Long save(Board board) {
         boardRepository.save(board);
         return board.getBoardNo();
     }
 
     public Optional<Board> findBoard(Long boardNo) {
-        return boardRepository.findByBoardNo(boardNo);
+        return boardRepository.findById(boardNo);
     }
 }

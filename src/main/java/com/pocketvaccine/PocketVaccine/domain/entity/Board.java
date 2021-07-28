@@ -1,5 +1,6 @@
-package com.pocketvaccine.PocketVaccine.domain;
+package com.pocketvaccine.PocketVaccine.domain.entity;
 
+import com.pocketvaccine.PocketVaccine.domain.type.VaccineType;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,9 +17,17 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long boardNo;
 
-    @Column(nullable = false)
+    private String userId;
+
     private String title;
+
     private String content;
-    private String vaccineType;
+
+    @Enumerated(EnumType.STRING)
+    private VaccineType vaccineType;
 
 }
+
+
+
+
