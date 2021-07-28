@@ -1,17 +1,15 @@
 package com.pocketvaccine.PocketVaccine.domain.entity;
 
+import com.pocketvaccine.PocketVaccine.domain.type.Sex;
+import lombok.*;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@ToString
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter @Setter
 public class User {
 
@@ -23,8 +21,9 @@ public class User {
 
     private String password;
 
-//    private String gender;
-//
-//    private int age;
+    @Enumerated(EnumType.STRING)
+    private Sex sex;
+
+    private int age;
 
 }

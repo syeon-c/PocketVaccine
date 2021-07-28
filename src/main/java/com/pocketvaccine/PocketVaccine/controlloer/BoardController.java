@@ -12,9 +12,9 @@ import java.net.URI;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/v1/boards")
+@RequestMapping("/v1/boards")
 @RequiredArgsConstructor
-public class BoardApiController {
+public class BoardController {
     private final BoardService boardService;
 
     @PostMapping

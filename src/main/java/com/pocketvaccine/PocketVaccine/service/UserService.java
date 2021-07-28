@@ -1,28 +1,14 @@
 package com.pocketvaccine.PocketVaccine.service;
 
-import com.pocketvaccine.PocketVaccine.domain.entity.User;
-import com.pocketvaccine.PocketVaccine.repository.UserRepository;
+import com.pocketvaccine.PocketVaccine.domain.dto.UserDto;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
+@Service
+public interface UserService {
+    //회원가입
+    public ResponseEntity<UserDto> join(UserDto userDto);
 
-public class UserService {
-//
-//    private final UserRepository userRepository = new MemoryUserRepository();
-//
-//    public String join(User user) {
-//        validateDuplicateUser(user);
-//        userRepository.save(user);
-//        return user.getId();
-//    }
-//
-//    public List<User> findUsers() {
-//        return userRepository.findAll();
-//    }
-//
-//    private void validateDuplicateUser(User user) {
-//        userRepository.findById(user.getId())
-//            .ifPresent(u -> {
-//                throw new IllegalStateException("중복되는 아이디 입니다.");
-//            });
-//    }
+    //로그인
+    public ResponseEntity<UserDto> signIn(String userId, String password);
 }

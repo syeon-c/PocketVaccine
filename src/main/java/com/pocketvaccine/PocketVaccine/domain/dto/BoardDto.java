@@ -1,5 +1,5 @@
 package com.pocketvaccine.PocketVaccine.domain.dto;
 
-public class BoardDTO {
+public class BoardDto {
 
 }
