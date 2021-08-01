@@ -1,7 +1,9 @@
 package com.pocketvaccine.PocketVaccine.controlloer;
 
-import com.pocketvaccine.PocketVaccine.domain.entity.Board;
-import com.pocketvaccine.PocketVaccine.service.BoardService;
+import com.pocketvaccine.PocketVaccine.domain.board.dto.BoardDto;
+import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
+import com.pocketvaccine.PocketVaccine.domain.common.ResultEntity;
+import com.pocketvaccine.PocketVaccine.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -12,22 +14,22 @@ import java.net.URI;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/v1/boards")
+@RequestMapping("/api/boards")
 @RequiredArgsConstructor
 public class BoardController {
+
     private final BoardService boardService;
 
     @PostMapping
-    public ResponseEntity uploadBoard(@RequestBody Board board) {
-        Long boardNo = boardService.save(board);
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.setLocation(URI.create("/api/v1/boards/" + boardNo));
-        return new ResponseEntity<>(responseHeaders, HttpStatus.CREATED);
+    public ResponseEntity uploadBoard(@RequestBody BoardDto boardDto) {
+        Board board = boardService.save(boardDto);
+        boardDto.setBoardId(board.getBoardId());
+        return ResultEntity.created("/api/boards/" + boardDto.getBoardId(), boardDto);
     }
 
     @GetMapping("/{boardNo}")
     public ResponseEntity getBoard(@PathVariable Long boardNo) {
-        Optional<Board> board = boardService.findBoard(boardNo);
+        Optional<Board> board = boardService.findById(boardNo);
 
         if (board.isPresent()) {
             return ResponseEntity.ok(board.get());

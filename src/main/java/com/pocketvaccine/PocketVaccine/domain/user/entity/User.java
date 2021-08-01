@@ -1,6 +1,6 @@
-package com.pocketvaccine.PocketVaccine.domain.entity;
+package com.pocketvaccine.PocketVaccine.domain.user.entity;
 
-import com.pocketvaccine.PocketVaccine.domain.type.Sex;
+import com.pocketvaccine.PocketVaccine.domain.user.type.Gender;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,14 +15,14 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userId;
 
-    private String user_id;
+    private String userEmail;
 
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Sex sex;
+    private Gender gender;
 
     private int age;
 
