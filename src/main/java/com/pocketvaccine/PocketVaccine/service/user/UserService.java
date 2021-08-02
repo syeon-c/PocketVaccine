@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
+
     //회원가입
     ResultDto<User> join(UserDto userDto);
 
     //로그인
     ResultDto signIn(String userId, String password);
+
 }

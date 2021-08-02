@@ -1,10 +1,9 @@
 package com.pocketvaccine.PocketVaccine.domain.common;
 
+import java.net.URI;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-import java.net.URI;
 
 @SuppressWarnings("unchecked")
 public class ResultEntity {

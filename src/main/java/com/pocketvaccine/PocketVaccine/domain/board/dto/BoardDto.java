@@ -2,12 +2,10 @@ package com.pocketvaccine.PocketVaccine.domain.board.dto;
 
 import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.*;
 
-import javax.persistence.*;
-
-@Entity
-@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,6 +33,10 @@ public class BoardDto {
 
     public static BoardDto ofEntity(Board entity) {
         return new BoardDto(entity);
+    }
+
+    public static List<BoardDto> ofEntities(List<Board> entities) {
+        return entities.stream().map(BoardDto::ofEntity).collect(Collectors.toList());
     }
 
 }
