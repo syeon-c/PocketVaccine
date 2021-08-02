@@ -2,6 +2,7 @@ package com.pocketvaccine.PocketVaccine.service.board;
 
 import com.pocketvaccine.PocketVaccine.domain.board.dto.BoardDto;
 import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
+import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 import com.pocketvaccine.PocketVaccine.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -42,5 +43,10 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public Page<Board> findByUserId(Long userId, Integer page, Integer size) {
         return boardRepository.findAllByUserIdOrderByBoardIdDesc(userId, PageRequest.of(page, size));
+    }
+
+    @Override
+    public Page<Board> findByVaccineType(VaccineType vaccineType, Integer page, Integer size) {
+        return boardRepository.findAllByVaccineTypeOrderByBoardIdDesc(vaccineType, PageRequest.of(page, size));
     }
 }

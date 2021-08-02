@@ -2,6 +2,7 @@ package com.pocketvaccine.PocketVaccine.controlloer;
 
 import com.pocketvaccine.PocketVaccine.domain.board.dto.BoardDto;
 import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
+import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 import com.pocketvaccine.PocketVaccine.domain.common.Paginate;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultCode;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultEntity;
@@ -9,7 +10,6 @@ import com.pocketvaccine.PocketVaccine.service.board.BoardService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,11 +46,14 @@ public class BoardController {
     @GetMapping("")
     public ResponseEntity getBoards(
             @RequestParam(required = false) Long userId,
+            @RequestParam(required = false) VaccineType vaccineType,
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size) {
         Page<Board> boardList;
         if(Optional.ofNullable(userId).isPresent()) {
             boardList = boardService.findByUserId(userId, page, size);
+        } else if(Optional.ofNullable(vaccineType).isPresent()) {
+            boardList = boardService.findByVaccineType(vaccineType, page, size);
         } else {
             boardList = boardService.findAll(page, size);
         }
