@@ -58,7 +58,6 @@ public class BoardController {
             boardList = boardService.findAll(page, size);
         }
         return ResultEntity.ok(BoardDto.ofEntities(boardList.getContent()), Paginate.setPaginate(boardList));
-
     }
 
 }
