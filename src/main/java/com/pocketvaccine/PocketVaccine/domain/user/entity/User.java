@@ -17,13 +17,25 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
+    private Long kakaoId;
+
+    @Setter
+    private String userName;
+
+    @Setter
     private String userEmail;
 
     private String password;
-
+    
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
     private int age;
+
+    @Setter
+    private String accessToken;
+
+    @Setter
+    private String refreshToken;
 
 }
