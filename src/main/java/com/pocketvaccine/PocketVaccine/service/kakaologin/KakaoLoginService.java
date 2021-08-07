@@ -1,13 +1,20 @@
 package com.pocketvaccine.PocketVaccine.service.kakaologin;
 
 import com.pocketvaccine.PocketVaccine.domain.user.dto.KakaoToken;
+import com.pocketvaccine.PocketVaccine.domain.user.dto.KakaoUserInfoDto;
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
-import org.springframework.stereotype.Service;
 
-@Service
 public interface KakaoLoginService {
-    User signIn();
-    User signUp();
-    //disconnect;
-    KakaoToken getAccessToken(String accessToken);
+
+    User signIn(Long kakaoId);
+
+    User signUp(String code);
+
+    KakaoUserInfoDto getKakaoUserInfo(String accessToken);
+
+    KakaoToken generateToken(String code);
+
+    KakaoToken refreshToken(String refreshToken);
+
+    KakaoToken getKakaoTokenInfo(String accessToken);
 }

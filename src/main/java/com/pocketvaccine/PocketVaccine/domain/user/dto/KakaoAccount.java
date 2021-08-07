@@ -13,6 +13,6 @@ public class KakaoAccount {
 
     Gender gender;
 
-    String ageRange;
+    String age;
 
 }

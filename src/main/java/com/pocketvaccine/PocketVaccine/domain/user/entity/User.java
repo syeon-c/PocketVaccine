@@ -30,7 +30,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    private int age;
+    private Integer age;
 
     @Setter
     private String accessToken;
