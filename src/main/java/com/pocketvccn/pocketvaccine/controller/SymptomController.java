@@ -1,8 +1,5 @@
 package com.pocketvccn.pocketvaccine.controller;
 
-import com.google.gson.Gson;
-import com.pocketvccn.pocketvaccine.domain.common.ResultEntity;
-import com.pocketvccn.pocketvaccine.domain.symptom.entity.Symptom;
 import com.pocketvccn.pocketvaccine.domain.symptom.entity.SymptomMapping;
 import com.pocketvccn.pocketvaccine.domain.user.type.Gender;
 import com.pocketvccn.pocketvaccine.service.symptom.SymptomService;

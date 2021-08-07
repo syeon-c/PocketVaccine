@@ -1,6 +1,5 @@
 package com.pocketvccn.pocketvaccine.service.symptom;
 
-import com.pocketvccn.pocketvaccine.domain.symptom.entity.Symptom;
 import com.pocketvccn.pocketvaccine.domain.symptom.entity.SymptomMapping;
 import com.pocketvccn.pocketvaccine.domain.user.type.Gender;
 import com.pocketvccn.pocketvaccine.repository.SymptomRepository;
