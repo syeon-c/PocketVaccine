@@ -1,13 +1,11 @@
 package com.pocketvaccine.PocketVaccine.service.kakaologin;
 
-
 import com.pocketvaccine.PocketVaccine.domain.user.dto.KakaoToken;
 import com.pocketvaccine.PocketVaccine.domain.user.dto.KakaoUserInfoDto;
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
 import com.pocketvaccine.PocketVaccine.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -16,7 +14,6 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
-
 import java.util.Collections;
 import java.util.Optional;
 
@@ -121,16 +118,68 @@ public class KakaoLoginServiceImpl implements KakaoLoginService {
 
     @Override
     public KakaoToken generateToken(String code) {
-        return null;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
+        map.add("grant_type", "authorization_code");
+        map.add("client_id", kakaoRestApiKey);
+        map.add("redirect_uri", kakaoRedirectUri);
+        map.add("code", code);
+
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity(map, headers);
+        try {
+            KakaoToken response = restTemplate
+                    .postForObject(kokaoAuthTokenUri, request, KakaoToken.class,
+                            request);
+            return response;
+        } catch (HttpClientErrorException e) {
+            log.error(e.getMessage());
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
     public KakaoToken refreshToken(String refreshToken) {
-        return null;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
+        map.add("grant_type", "refresh_token");
+        map.add("client_id", kakaoRestApiKey);
+        map.add("refresh_token", refreshToken);
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity(map, headers);
+        try {
+            KakaoToken response = restTemplate
+                    .postForObject(kokaoAuthTokenUri, request, KakaoToken.class,
+                            request);
+            response.setCode(200);
+            return response;
+        } catch (HttpClientErrorException e) {
+            log.error(e.getMessage());
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
     public KakaoToken getKakaoTokenInfo(String accessToken) {
-        return null;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        headers.add("Authorization", "Bearer " + accessToken);
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity(map, headers);
+        try {
+            ResponseEntity<KakaoToken> response = restTemplate.exchange(kakaoAccessTokenInfoUri,
+                    HttpMethod.GET, request, KakaoToken.class);
+
+            if(response.getStatusCode() == HttpStatus.OK) {
+                response.getBody().setCode(200);
+            }
+            return response.getBody();
+        } catch (HttpClientErrorException e) {
+            log.error(e.getMessage());
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+        }
     }
 }
