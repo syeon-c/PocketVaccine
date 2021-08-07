@@ -13,3 +13,21 @@ spring:
     url: jdbc:mysql://localhost:3306/pocketvaccine?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
     username: root
     password: 1234
+
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: 9a14ba30e24aec9b0b85c4c47c83bcab
+            redirect-uri: http://localhost:8080/api/kakaologin
+            client-authentication-method: POST
+            authorization-grant-type: authorization_code
+            scope: profile_nickname, profile_image, account_email
+            client-name: Kakao
+        provider:
+          kakao:
+            authorization_uri: https://kauth.kakao.com/oauth/authorize
+            token_uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user_name_attribute: id
