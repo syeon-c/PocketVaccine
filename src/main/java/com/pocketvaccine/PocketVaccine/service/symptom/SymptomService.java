@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface SymptomService {
 
-    List<SymptomMapping> showSymptom(int vaccineNum, Gender gender);
+    List<SymptomMapping> showSymptom(int vaccineDose, Gender gender);
 
 }

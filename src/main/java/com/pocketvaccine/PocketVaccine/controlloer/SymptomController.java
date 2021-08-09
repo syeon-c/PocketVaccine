@@ -18,11 +18,11 @@ public class SymptomController {
     private final SymptomService symptomService;
     
     @GetMapping("")
-    public ResponseEntity showSymptoms(@RequestParam(required = false) int vaccineNum,
+    public ResponseEntity showSymptoms(@RequestParam(required = false) int vaccineDose,
                                        @RequestParam(required = false) Gender gender) {
         List<SymptomMapping> symptomList = null;
-        if(Optional.ofNullable(vaccineNum).isPresent() && Optional.ofNullable(gender).isPresent()) {
-            symptomList = symptomService.showSymptom(vaccineNum, gender);
+        if(Optional.ofNullable(vaccineDose).isPresent() && Optional.ofNullable(gender).isPresent()) {
+            symptomList = symptomService.showSymptom(vaccineDose, gender);
         }
         return ResponseEntity.ok(symptomList);
     }

@@ -21,6 +21,8 @@ public class BoardDto {
 
     private String content;
 
+    private Integer vaccineDose;
+
     private VaccineType vaccineType;
 
     protected BoardDto(Board entity) {
@@ -28,6 +30,7 @@ public class BoardDto {
         this.userId = entity.getUserId();
         this.title = entity.getTitle();
         this.content = entity.getContent();
+        this.vaccineDose = entity.getVaccineDose();
         this.vaccineType = entity.getVaccineType();
     }
 
