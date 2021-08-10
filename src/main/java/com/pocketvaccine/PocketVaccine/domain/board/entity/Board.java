@@ -23,17 +23,17 @@ public class Board {
 
     private String content;
 
-    private int vaccineNum;
+    private int vaccineDose;
 
     @Enumerated(EnumType.STRING)
     private VaccineType vaccineType;
 
     @Builder
-    public Board(Long userId, String title, String content, int vaccineNum, VaccineType vaccineType) {
+    public Board(Long userId, String title, String content, int vaccineDose, VaccineType vaccineType) {
         this.userId = userId;
         this.title = title;
         this.content = content;
-        this.vaccineNum = vaccineNum;
+        this.vaccineDose = vaccineDose;
         this.vaccineType = vaccineType;
     }
 

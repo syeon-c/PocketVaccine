@@ -1,7 +1,6 @@
 package com.pocketvaccine.PocketVaccine.service.symptom;
 
 import com.pocketvaccine.PocketVaccine.domain.symptom.entity.SymptomMapping;
-import com.pocketvaccine.PocketVaccine.domain.user.type.Gender;
 import com.pocketvaccine.PocketVaccine.repository.SymptomRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -16,8 +15,8 @@ public class SymptomServiceImpl implements SymptomService {
     final SymptomRepository symptomRepository;
 
     @Override
-    public List<SymptomMapping> showSymptom(int vaccineDose, Gender gender) {
-        return symptomRepository.findSymptom(vaccineDose, gender);
+    public List<SymptomMapping> showSymptom(int vaccineDose) {
+        return symptomRepository.findSymptom(vaccineDose);
     }
 
 }

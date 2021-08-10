@@ -30,7 +30,7 @@ public class BoardDto {
         this.userId = entity.getUserId();
         this.title = entity.getTitle();
         this.content = entity.getContent();
-        this.vaccineNum = entity.getVaccineNum();
+        this.vaccineNum = entity.getVaccineDose();
         this.vaccineType = entity.getVaccineType();
     }
 

@@ -1,7 +1,6 @@
 package com.pocketvaccine.PocketVaccine.controlloer;
 
 import com.pocketvaccine.PocketVaccine.domain.symptom.entity.SymptomMapping;
-import com.pocketvaccine.PocketVaccine.domain.user.type.Gender;
 import com.pocketvaccine.PocketVaccine.service.symptom.SymptomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +16,11 @@ public class SymptomController {
 
     private final SymptomService symptomService;
     
-    @GetMapping("")
-    public ResponseEntity showSymptoms(@RequestParam(required = false) int vaccineDose,
-                                       @RequestParam(required = false) Gender gender) {
+    @GetMapping("/{vaccineDose}")
+    public ResponseEntity showSymptoms(@PathVariable int vaccineDose) {
         List<SymptomMapping> symptomList = null;
-        if(Optional.ofNullable(vaccineDose).isPresent() && Optional.ofNullable(gender).isPresent()) {
-            symptomList = symptomService.showSymptom(vaccineDose, gender);
+        if(Optional.ofNullable(vaccineDose).isPresent()) {
+            symptomList = symptomService.showSymptom(vaccineDose);
         }
         return ResponseEntity.ok(symptomList);
     }
