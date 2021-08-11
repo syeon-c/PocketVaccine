@@ -17,4 +17,7 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
     Page<Board> findAllByVaccineTypeOrderByBoardIdDesc(VaccineType vaccineType, PageRequest pageRequest);
 
+    Page<Board> findAllByVaccineDoseOrderByBoardIdDesc(Integer vaccineDose, PageRequest pageRequest);
+
+//    Page<Board> findAllByAgeOrderByBoardIdDesc(Integer age, PageRequest pageRequest);
 }

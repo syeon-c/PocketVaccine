@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Optional;
 
 @Service
@@ -31,6 +33,12 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    @Transactional
+    public void delete(Long boardId) {
+        boardRepository.deleteById(boardId);
+    }
+
+    @Override
     public Optional<Board> findById(Long boardId) {
         return boardRepository.findById(boardId);
     }
@@ -49,4 +57,14 @@ public class BoardServiceImpl implements BoardService {
     public Page<Board> findByVaccineType(VaccineType vaccineType, Integer page, Integer size) {
         return boardRepository.findAllByVaccineTypeOrderByBoardIdDesc(vaccineType, PageRequest.of(page, size));
     }
+
+    @Override
+    public Page<Board> findByVaccineDose(Integer vaccineDose, Integer page, Integer size) {
+        return boardRepository.findAllByVaccineDoseOrderByBoardIdDesc(vaccineDose, PageRequest.of(page, size));
+    }
+
+//    @Override
+//    public Page<Board> findByAge(Integer age, Integer page, Integer size) {
+//        return boardRepository.findAllByAgeOrderByBoardIdDesc(age, PageRequest.of(page, size));
+//    }
 }

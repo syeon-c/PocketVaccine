@@ -11,13 +11,7 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -47,17 +41,35 @@ public class BoardController {
     public ResponseEntity getBoards(
             @RequestParam(required = false) Long userId,
             @RequestParam(required = false) VaccineType vaccineType,
+            @RequestParam(required = false) Integer vaccineDose,
+//            @RequestParam(required = false) Integer age,
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size) {
+
         Page<Board> boardList;
         if(Optional.ofNullable(userId).isPresent()) {
             boardList = boardService.findByUserId(userId, page, size);
         } else if(Optional.ofNullable(vaccineType).isPresent()) {
             boardList = boardService.findByVaccineType(vaccineType, page, size);
+        } else if(Optional.ofNullable(vaccineDose).isPresent()) {
+            boardList = boardService.findByVaccineDose(vaccineDose, page, size);
+//        } else if(Optional.ofNullable(age).isPresent()) {
+//            boardList = boardService.findByAge(age, page, size);
         } else {
             boardList = boardService.findAll(page, size);
         }
         return ResultEntity.ok(BoardDto.ofEntities(boardList.getContent()), Paginate.setPaginate(boardList));
     }
+
+    @DeleteMapping("/{boardId}")
+    public String delete(@PathVariable Long boardId) {
+        boardService.delete(boardId);
+        return "redirect:/";
+    }
+
+//    @PatchMapping("/{boardId}")
+//    public ResponseEntity reviseBoard() {
+//        return ResponseEntity.ok()
+//    }
 
 }
