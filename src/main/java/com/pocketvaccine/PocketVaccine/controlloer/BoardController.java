@@ -62,14 +62,8 @@ public class BoardController {
     }
 
     @DeleteMapping("/{boardId}")
-    public String delete(@PathVariable Long boardId) {
+    public void delete(@PathVariable Long boardId) {
         boardService.delete(boardId);
-        return "redirect:/";
     }
-
-//    @PatchMapping("/{boardId}")
-//    public ResponseEntity reviseBoard() {
-//        return ResponseEntity.ok()
-//    }
 
 }
