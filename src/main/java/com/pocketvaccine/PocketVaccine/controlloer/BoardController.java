@@ -5,7 +5,9 @@ import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 import com.pocketvaccine.PocketVaccine.domain.common.Paginate;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultCode;
+import com.pocketvaccine.PocketVaccine.domain.common.ResultDto;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultEntity;
+import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
 import com.pocketvaccine.PocketVaccine.service.board.BoardService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +25,11 @@ public class BoardController {
 
     @PostMapping
     public ResponseEntity save(@RequestBody BoardDto boardDto) {
-        Board board = boardService.save(boardDto);
-        boardDto.setBoardId(board.getBoardId());
+        ResultDto<Board> resultDto = boardService.save(boardDto);
+        if(resultDto.getCode() == ResultCode.USER_NOT_FOUND.toString()) {
+            return ResultEntity.notFound(ResultCode.USER_NOT_FOUND, "USER_NOT_FOUND");
+        }
+        boardDto.setBoardId(resultDto.getData().getBoardId());
         return ResultEntity.created("/api/boards/" + boardDto.getBoardId(), boardDto);
     }
 
@@ -39,22 +44,22 @@ public class BoardController {
 
     @GetMapping("")
     public ResponseEntity getBoards(
-            @RequestParam(required = false) Long userId,
+            @RequestParam(required = false) User user,
             @RequestParam(required = false) VaccineType vaccineType,
             @RequestParam(required = false) Integer vaccineDose,
-//            @RequestParam(required = false) Integer age,
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size) {
 
+
         Page<Board> boardList;
-        if(Optional.ofNullable(userId).isPresent()) {
-            boardList = boardService.findByUserId(userId, page, size);
+        if(Optional.ofNullable(user.getUserId()).isPresent()) {
+            boardList = boardService.findByUserId(user.getUserId(), page, size);
         } else if(Optional.ofNullable(vaccineType).isPresent()) {
             boardList = boardService.findByVaccineType(vaccineType, page, size);
         } else if(Optional.ofNullable(vaccineDose).isPresent()) {
             boardList = boardService.findByVaccineDose(vaccineDose, page, size);
-//        } else if(Optional.ofNullable(age).isPresent()) {
-//            boardList = boardService.findByAge(age, page, size);
+        } else if(Optional.ofNullable(user.getAge()).isPresent()) {
+            boardList = boardService.findByAge(user.getAge(), page, size);
         } else {
             boardList = boardService.findAll(page, size);
         }

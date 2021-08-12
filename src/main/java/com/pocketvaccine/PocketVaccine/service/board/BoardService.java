@@ -3,12 +3,13 @@ package com.pocketvaccine.PocketVaccine.service.board;
 import com.pocketvaccine.PocketVaccine.domain.board.dto.BoardDto;
 import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
+import com.pocketvaccine.PocketVaccine.domain.common.ResultDto;
 import org.springframework.data.domain.Page;
 import java.util.Optional;
 
 public interface BoardService {
 
-    Board save(BoardDto boardDto);
+    <T> ResultDto<T> save(BoardDto boardDto);
 
     void delete(Long boardId);
 
@@ -22,6 +23,6 @@ public interface BoardService {
 
     Page<Board> findByVaccineDose(Integer vaccineDose, Integer page, Integer size);
 
-//    Page<Board> findByAge(Integer age, Integer page, Integer size);
+    Page<Board> findByAge(Integer age, Integer page, Integer size);
 
 }

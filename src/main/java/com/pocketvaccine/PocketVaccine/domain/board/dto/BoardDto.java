@@ -33,7 +33,7 @@ public class BoardDto {
 
     protected BoardDto(Board entity) {
         this.boardId = entity.getBoardId();
-        this.userId = entity.getUserId();
+        this.userId = entity.getUser().getUserId();
         this.title = entity.getTitle();
         this.content = entity.getContent();
         this.createdAt = entity.getCreatedAt();
