@@ -10,6 +10,8 @@ public interface BoardService {
 
     Board save(BoardDto boardDto);
 
+    void delete(Long boardId);
+
     Optional<Board> findById(Long boardId);
 
     Page<Board> findAll(Integer page, Integer size);
@@ -17,4 +19,9 @@ public interface BoardService {
     Page<Board> findByUserId(Long userId, Integer page, Integer size);
 
     Page<Board> findByVaccineType(VaccineType vaccineType, Integer page, Integer size);
+
+    Page<Board> findByVaccineDose(Integer vaccineDose, Integer page, Integer size);
+
+//    Page<Board> findByAge(Integer age, Integer page, Integer size);
+
 }
