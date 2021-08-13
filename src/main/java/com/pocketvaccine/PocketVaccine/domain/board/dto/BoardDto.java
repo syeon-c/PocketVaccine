@@ -6,6 +6,8 @@ import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.pocketvaccine.PocketVaccine.domain.symptom.entity.Symptom;
 import lombok.*;
 
 @Builder
@@ -31,6 +33,8 @@ public class BoardDto {
 
     private VaccineType vaccineType;
 
+    private List<Symptom> symptoms;
+
     protected BoardDto(Board entity) {
         this.boardId = entity.getBoardId();
         this.userId = entity.getUserId();
@@ -40,6 +44,7 @@ public class BoardDto {
         this.updatedAt = entity.getUpdatedAt();
         this.vaccineDose = entity.getVaccineDose();
         this.vaccineType = entity.getVaccineType();
+        this.symptoms = entity.getSymptoms();
     }
 
     public static BoardDto ofEntity(Board entity) {
