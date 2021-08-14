@@ -66,8 +66,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Page<Board> findByUserId(Long userId, Integer page, Integer size) {
-        return boardRepository.findAllByUserIdOrderByBoardIdDesc(userId, PageRequest.of(page, size));
+    public Page<Board> findByUser(User user, Integer page, Integer size) {
+        return boardRepository.findAllByUserOrderByBoardIdDesc(user, PageRequest.of(page, size));
     }
 
     @Override

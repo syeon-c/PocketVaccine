@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -30,10 +31,10 @@ public class Board {
     private String content;
 
     @DateTimeFormat(pattern = "dd.MM.yyyy hh:mm")
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     @DateTimeFormat(pattern = "dd.MM.yyyy hh:mm")
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
     private Integer likes;
 
@@ -47,7 +48,7 @@ public class Board {
         this.user = user;
         this.title = title;
         this.content = content;
-        this.createdAt = LocalDate.now();
+        this.createdAt = LocalDateTime.now();
         this.vaccineDose = vaccineDose;
         this.vaccineType = vaccineType;
     }

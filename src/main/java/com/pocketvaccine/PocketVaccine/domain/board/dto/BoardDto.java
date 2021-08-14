@@ -3,6 +3,7 @@ package com.pocketvaccine.PocketVaccine.domain.board.dto;
 import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,9 +24,9 @@ public class BoardDto {
 
     private String content;
 
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
     private Integer vaccineDose;
 
