@@ -25,7 +25,9 @@ public class BoardServiceImpl implements BoardService {
                 .userId(boardDto.getUserId())
                 .title(boardDto.getTitle())
                 .content(boardDto.getContent())
+                .vaccineDose(boardDto.getVaccineDose())
                 .vaccineType(boardDto.getVaccineType())
+//                .symptoms(boardDto.getSymptoms())
                 .build();
         boardRepository.save(board);
 

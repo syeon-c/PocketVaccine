@@ -7,7 +7,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "board_symptom")
+@Table(name = "symptom")
 @ToString
 @Builder
 @NoArgsConstructor

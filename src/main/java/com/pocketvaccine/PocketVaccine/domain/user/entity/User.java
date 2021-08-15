@@ -26,11 +26,8 @@ public class User {
     private String userEmail;
 
     private String password;
-    
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
 
-    private Integer age;
+    private String age_range;
 
     @Setter
     private String accessToken;

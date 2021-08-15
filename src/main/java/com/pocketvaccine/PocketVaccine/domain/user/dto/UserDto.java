@@ -20,17 +20,14 @@ public class UserDto {
 
     private String password;
 
-    private Gender gender;
-
-    private int age;
+    private String age_range;
 
     protected UserDto(User entity) {
         this.userId = entity.getUserId();
         this.kakaoId = entity.getKakaoId();
         this.userName = entity.getUserName();
         this.userEmail = entity.getUserEmail();
-        this.gender = entity.getGender();
-        this.age = entity.getAge();
+        this.age_range = entity.getAge_range();
     }
 
     public static UserDto ofEntity(User entity) {

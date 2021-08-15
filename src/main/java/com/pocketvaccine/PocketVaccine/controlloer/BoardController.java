@@ -6,8 +6,12 @@ import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 import com.pocketvaccine.PocketVaccine.domain.common.Paginate;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultCode;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultEntity;
+//import com.pocketvaccine.PocketVaccine.domain.symptom.dto.SymptomDto;
+import com.pocketvaccine.PocketVaccine.domain.symptom.entity.Symptom;
 import com.pocketvaccine.PocketVaccine.service.board.BoardService;
 import java.util.Optional;
+
+import com.pocketvaccine.PocketVaccine.service.symptom.SymptomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
