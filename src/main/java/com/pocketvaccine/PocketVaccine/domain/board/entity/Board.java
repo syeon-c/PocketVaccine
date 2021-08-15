@@ -2,14 +2,13 @@ package com.pocketvaccine.PocketVaccine.domain.board.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
-import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
 import com.pocketvaccine.PocketVaccine.domain.symptom.entity.Symptom;
+import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity

@@ -1,4 +1,4 @@
-package com.pocketvaccine.PocketVaccine.domain.symptom.type;
+package com.pocketvaccine.PocketVaccine.domain.board.type;
 
 public enum SymptomType {
     근육통, 어지러움, 발열, 오한,

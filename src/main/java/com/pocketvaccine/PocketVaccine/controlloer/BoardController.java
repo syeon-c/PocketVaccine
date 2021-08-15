@@ -12,10 +12,8 @@ import com.pocketvaccine.PocketVaccine.repository.UserRepository;
 import com.pocketvaccine.PocketVaccine.service.board.BoardService;
 import java.util.Optional;
 
-import com.pocketvaccine.PocketVaccine.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,8 +28,8 @@ public class BoardController {
     private final UserRepository userRepository;
 
     @PostMapping
-    public ResponseEntity save(@RequestBody BoardDto boardDto) {
-        ResultDto<Board> resultDto = boardService.save(boardDto);
+    public ResponseEntity post(@RequestBody BoardDto boardDto) {
+        ResultDto<Board> resultDto = boardService.post(boardDto);
         if(resultDto.getCode() == ResultCode.USER_NOT_FOUND.toString()) {
             return ResultEntity.notFound(ResultCode.USER_NOT_FOUND, "USER_NOT_FOUND");
         }

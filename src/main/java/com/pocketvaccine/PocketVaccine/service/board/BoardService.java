@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface BoardService {
 
-    <T> ResultDto<T> save(BoardDto boardDto);
+    <T> ResultDto<T> post(BoardDto boardDto);
 
     void delete(Long boardId);
 

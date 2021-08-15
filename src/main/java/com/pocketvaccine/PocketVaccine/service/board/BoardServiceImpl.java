@@ -26,7 +26,7 @@ public class BoardServiceImpl implements BoardService {
     final UserRepository userRepository;
 
     @Override
-    public ResultDto<Board> save(BoardDto boardDto) {
+    public ResultDto<Board> post(BoardDto boardDto) {
         ResultDto<Board> resultDto = new ResultDto<>();
 
         Optional<User> user = userRepository.findById(boardDto.getUserId());
@@ -39,9 +39,15 @@ public class BoardServiceImpl implements BoardService {
                 .user(user.get())
                 .title(boardDto.getTitle())
                 .content(boardDto.getContent())
+                .ageRange(boardDto.getAgeRange())
+                .createdAt(boardDto.getCreatedAt())
+                .likes(0)
+                .vaccineDose(boardDto.getVaccineDose())
                 .vaccineType(boardDto.getVaccineType())
                 .build();
         boardRepository.save(board);
+
+
 
         resultDto.setCode(ResultCode.SUCCESS.toString());
         resultDto.setData(board);
