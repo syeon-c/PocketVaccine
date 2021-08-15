@@ -1,5 +1,7 @@
 package com.pocketvaccine.PocketVaccine.domain.symptom.entity;
 
+import com.fasterxml.jackson.annotation.*;
+import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,36 +15,17 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Symptom {
+
     @EmbeddedId
     private SymptomId symptomId;
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long boardId;
-//
-////    @Enumerated(EnumType.STRING)
-//    private SymptomType symptom;
+    @JsonIgnore
+    @MapsId("boardId")
+    @ManyToOne
+    @JoinColumn(name = "board_id")
+    private Board board;
 
-//    @ManyToOne(optional = false)
-//    private Board board;
 
-//    @Transient
-//    private String ages;
-////    @Transient
-//    private Long countMusclePain;
-////    @Transient
-//    private Long countFever;
-////    @Transient
-//    private Long countChill;
-////    @Transient
-//    private Long countHeadache;
 
-//    @Builder
-//    public Symptom(String ages, Long countMusclePain, Long countFever, Long countChill, Long countHeadache) {
-//        this.ages = ages;
-//        this.countMusclePain = countMusclePain;
-//        this.countFever = countFever;
-//        this.countChill = countChill;
-//        this.countHeadache = countHeadache;
-//    }
+
 }

@@ -1,14 +1,15 @@
 package com.pocketvaccine.PocketVaccine.domain.board.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
+import com.pocketvaccine.PocketVaccine.domain.symptom.entity.Symptom;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 @ToString
@@ -45,6 +46,10 @@ public class Board {
     @Enumerated(EnumType.STRING)
     private VaccineType vaccineType;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    private List<Symptom> symptoms;
+
     @Builder
     public Board(User user, String title, String content, Integer vaccineDose, VaccineType vaccineType, Integer likes, String ageRange) {
         this.user = user;
@@ -55,6 +60,8 @@ public class Board {
         this.vaccineType = vaccineType;
         this.likes = likes;
         this.ageRange = ageRange;
+        this.symptoms = symptoms;
+
     }
 
 }

@@ -3,7 +3,6 @@ package com.pocketvaccine.PocketVaccine.repository;
 import com.pocketvaccine.PocketVaccine.domain.symptom.entity.Symptom;
 import com.pocketvaccine.PocketVaccine.domain.symptom.entity.SymptomId;
 import com.pocketvaccine.PocketVaccine.domain.symptom.entity.SymptomMapping;
-import com.pocketvaccine.PocketVaccine.domain.user.type.Gender;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -32,5 +31,5 @@ public interface SymptomRepository extends JpaRepository<Symptom, SymptomId> {
 //    @Query("select s from Symptom s join Board b on s.symptomId.boardId = b.boardId " +
 //            "join User u on b.userId = u.userId " +
 //            "where b.vaccineDose= :vaccineDose and u.gender= :gender")
-    List<SymptomMapping> findSymptom(@Param("vaccineDose") int vaccineRound, @Param("gender") Gender gender);
+    List<SymptomMapping> findSymptom(@Param("vaccineDose") int vaccineRound);
 }
