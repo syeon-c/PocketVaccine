@@ -1,6 +1,5 @@
 package com.pocketvaccine.PocketVaccine.domain.user.entity;
 
-import com.pocketvaccine.PocketVaccine.domain.user.type.Gender;
 import lombok.*;
 
 import javax.persistence.*;

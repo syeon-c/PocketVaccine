@@ -26,6 +26,7 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
 //    Page<Board> findAllByAgeOrderByBoardIdDesc(Integer age, PageRequest pageRequest);
 
-    Page<Board> findByAgeRange(String ageRange, PageRequest pageRequest);
+    @Query("select b from Board b join b.user u where u.ageRange = :ageRange")
+    Page<Board> findByUserAge(@Param("ageRange") PageRequest pageRequest);
 
 }

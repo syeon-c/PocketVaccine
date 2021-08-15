@@ -19,5 +19,5 @@ public interface SymptomRepository extends JpaRepository<Symptom, SymptomId> {
             "count(case when s.symptomId.symptom='두통' then 1 end) as countHeadache " +
             "from Symptom s join Board b on s.symptomId.boardId = b.boardId " +
             "where b.vaccineDose= :vaccineDose group by ageRange")
-    List<SymptomMapping> findSymptom(@Param("vaccineDose") int vaccineDose);
+    List<SymptomMapping> findSymptom(@Param("vaccineDose") int vaccineRound);
 }

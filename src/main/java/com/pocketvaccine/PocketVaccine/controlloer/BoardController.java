@@ -15,6 +15,7 @@ import java.util.Optional;
 import com.pocketvaccine.PocketVaccine.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -65,7 +66,7 @@ public class BoardController {
         } else if(Optional.ofNullable(vaccineDose).isPresent()) {
             boardList = boardService.findByVaccineDose(vaccineDose, page, size);
         } else if(Optional.ofNullable(ageRange).isPresent()) {
-            boardList = boardService.findByAgeRange(ageRange, page, size);
+            boardList = boardService.findByAge(page, size);
         } else {
             boardList = boardService.findAll(page, size);
         }
