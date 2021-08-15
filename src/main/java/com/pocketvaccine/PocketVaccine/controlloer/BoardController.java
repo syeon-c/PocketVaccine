@@ -66,7 +66,7 @@ public class BoardController {
         } else if(Optional.ofNullable(vaccineDose).isPresent()) {
             boardList = boardService.findByVaccineDose(vaccineDose, page, size);
         } else if(Optional.ofNullable(ageRange).isPresent()) {
-            boardList = boardService.findByAge(page, size);
+            boardList = boardService.findByAgeRange(ageRange, page, size);
         } else {
             boardList = boardService.findAll(page, size);
         }

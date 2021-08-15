@@ -4,7 +4,6 @@ import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +23,7 @@ public class BoardDto {
 
     private String userName;
 
-    private String userRange;
+    private String ageRange;
 
     private String title;
 
@@ -45,7 +44,7 @@ public class BoardDto {
 
         this.userId = entity.getUser().getUserId();
         this.userName = entity.getUser().getUserName();
-        this.userRange = entity.getAgeRange();
+        this.ageRange = entity.getAgeRange();
 
         this.title = entity.getTitle();
         this.content = entity.getContent();

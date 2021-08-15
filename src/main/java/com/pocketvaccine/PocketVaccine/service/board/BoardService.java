@@ -24,6 +24,6 @@ public interface BoardService {
 
     Page<Board> findByVaccineDose(Integer vaccineDose, Integer page, Integer size);
 
-    Page<Board> findByAge(Integer page, Integer size);
+    Page<Board> findByAgeRange(String ageRange, Integer page, Integer size);
 
 }

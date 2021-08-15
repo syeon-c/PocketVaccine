@@ -1,7 +1,7 @@
 package com.pocketvaccine.PocketVaccine.domain.symptom.entity;
 
 public interface SymptomMapping {
-    String getAges();
+    String getAgeRange();
 
     Long getCountMusclePain();
 
