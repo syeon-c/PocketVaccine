@@ -51,7 +51,7 @@ public class Board {
     private List<Symptom> symptoms;
 
     @Builder
-    public Board(User user, String title, String content, Integer vaccineDose, VaccineType vaccineType, Integer likes, String ageRange) {
+    public Board(User user, String title, String content, Integer vaccineDose, VaccineType vaccineType, Integer likes, String ageRange, List<Symptom> symptoms) {
         this.user = user;
         this.title = title;
         this.content = content;

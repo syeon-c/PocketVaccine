@@ -52,7 +52,7 @@ public class BoardController {
             @RequestParam(required = false) Long userId,
             @RequestParam(required = false) VaccineType vaccineType,
             @RequestParam(required = false) Integer vaccineDose,
-            @RequestParam(required = false) Integer age,
+            @RequestParam(required = false) String ageRange,
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size) {
 
@@ -64,8 +64,8 @@ public class BoardController {
             boardList = boardService.findByVaccineType(vaccineType, page, size);
         } else if(Optional.ofNullable(vaccineDose).isPresent()) {
             boardList = boardService.findByVaccineDose(vaccineDose, page, size);
-        } else if(Optional.ofNullable(age).isPresent()) {
-            boardList = boardService.findByAge(age, page, size);
+        } else if(Optional.ofNullable(ageRange).isPresent()) {
+            boardList = boardService.findByAgeRange(ageRange, page, size);
         } else {
             boardList = boardService.findAll(page, size);
         }

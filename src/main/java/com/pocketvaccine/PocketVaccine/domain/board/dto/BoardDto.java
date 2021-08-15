@@ -30,6 +30,8 @@ public class BoardDto {
 
     private LocalDateTime updatedAt;
 
+    private String ageRange;
+
     private Integer vaccineDose;
 
     private VaccineType vaccineType;
@@ -43,6 +45,7 @@ public class BoardDto {
         this.content = entity.getContent();
         this.createdAt = entity.getCreatedAt();
         this.updatedAt = entity.getUpdatedAt();
+        this.ageRange = entity.getAgeRange();
         this.vaccineDose = entity.getVaccineDose();
         this.vaccineType = entity.getVaccineType();
         this.symptoms = entity.getSymptoms();

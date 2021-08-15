@@ -41,6 +41,7 @@ public class BoardServiceImpl implements BoardService {
                 .content(boardDto.getContent())
                 .vaccineDose(boardDto.getVaccineDose())
                 .vaccineType(boardDto.getVaccineType())
+                .ageRange(boardDto.getAgeRange())
 //                .symptoms(boardDto.getSymptoms())
                 .build();
         boardRepository.save(board);
@@ -83,7 +84,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Page<Board> findByAge(Integer age, Integer page, Integer size) {
-        return boardRepository.findByUserAge(age, PageRequest.of(page, size));
+    public Page<Board> findByAgeRange(String ageRange, Integer page, Integer size) {
+        return boardRepository.findByAgeRange(ageRange, PageRequest.of(page, size));
     }
 }

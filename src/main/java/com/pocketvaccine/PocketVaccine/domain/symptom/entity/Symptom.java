@@ -25,7 +25,4 @@ public class Symptom {
     @JoinColumn(name = "board_id")
     private Board board;
 
-
-
-
 }

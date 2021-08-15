@@ -27,7 +27,7 @@ public class User {
 
     private String password;
 
-    private String age_range;
+    private String ageRange;
 
     @Setter
     private String accessToken;
