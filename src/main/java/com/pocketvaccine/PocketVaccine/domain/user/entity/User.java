@@ -1,6 +1,5 @@
 package com.pocketvaccine.PocketVaccine.domain.user.entity;
 
-import com.pocketvaccine.PocketVaccine.domain.user.type.Gender;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,11 +25,8 @@ public class User {
     private String userEmail;
 
     private String password;
-    
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
 
-    private Integer age;
+    private String ageRange;
 
     @Setter
     private String accessToken;

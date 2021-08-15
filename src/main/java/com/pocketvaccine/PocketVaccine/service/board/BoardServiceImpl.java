@@ -81,7 +81,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Page<Board> findByAge(Integer age, Integer page, Integer size) {
-        return boardRepository.findByUserAge(age, PageRequest.of(page, size));
+    public Page<Board> findByAge(Integer page, Integer size) {
+        return boardRepository.findByUserAge(PageRequest.of(page, size));
     }
 }

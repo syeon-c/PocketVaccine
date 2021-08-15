@@ -22,6 +22,10 @@ public class BoardDto {
 
     private Long userId;
 
+    private String userName;
+
+    private String userRange;
+
     private String title;
 
     private String content;
@@ -38,13 +42,19 @@ public class BoardDto {
 
     protected BoardDto(Board entity) {
         this.boardId = entity.getBoardId();
+
         this.userId = entity.getUser().getUserId();
+        this.userName = entity.getUser().getUserName();
+        this.userRange = entity.getAgeRange();
+
         this.title = entity.getTitle();
         this.content = entity.getContent();
         this.createdAt = entity.getCreatedAt();
         this.updatedAt = entity.getUpdatedAt();
+
         this.vaccineDose = entity.getVaccineDose();
         this.vaccineType = entity.getVaccineType();
+
         this.symptoms = entity.getSymptoms();
     }
 

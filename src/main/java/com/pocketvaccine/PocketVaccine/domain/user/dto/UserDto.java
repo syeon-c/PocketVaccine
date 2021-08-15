@@ -1,7 +1,6 @@
 package com.pocketvaccine.PocketVaccine.domain.user.dto;
 
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
-import com.pocketvaccine.PocketVaccine.domain.user.type.Gender;
 import lombok.*;
 
 @Builder
@@ -20,17 +19,14 @@ public class UserDto {
 
     private String password;
 
-    private Gender gender;
-
-    private int age;
+    private String ageRange;
 
     protected UserDto(User entity) {
         this.userId = entity.getUserId();
         this.kakaoId = entity.getKakaoId();
         this.userName = entity.getUserName();
         this.userEmail = entity.getUserEmail();
-        this.gender = entity.getGender();
-        this.age = entity.getAge();
+        this.ageRange = entity.getAgeRange();
     }
 
     public static UserDto ofEntity(User entity) {
