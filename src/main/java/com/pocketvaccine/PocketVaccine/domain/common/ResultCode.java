@@ -7,5 +7,7 @@ public enum ResultCode {
 
     BOARD_NOT_FOUND,
 
+    USER_NOT_FOUND,
+
     CREATED
 }

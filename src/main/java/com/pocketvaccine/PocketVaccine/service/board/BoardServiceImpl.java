@@ -3,7 +3,11 @@ package com.pocketvaccine.PocketVaccine.service.board;
 import com.pocketvaccine.PocketVaccine.domain.board.dto.BoardDto;
 import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
+import com.pocketvaccine.PocketVaccine.domain.common.ResultCode;
+import com.pocketvaccine.PocketVaccine.domain.common.ResultDto;
+import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
 import com.pocketvaccine.PocketVaccine.repository.BoardRepository;
+import com.pocketvaccine.PocketVaccine.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,10 +23,20 @@ public class BoardServiceImpl implements BoardService {
 
     final BoardRepository boardRepository;
 
+    final UserRepository userRepository;
+
     @Override
-    public Board save(BoardDto boardDto) {
+    public ResultDto<Board> save(BoardDto boardDto) {
+        ResultDto<Board> resultDto = new ResultDto<>();
+
+        Optional<User> user = userRepository.findById(boardDto.getUserId());
+        if (!user.isPresent()) {
+            resultDto.setCode(ResultCode.USER_NOT_FOUND.toString());
+            return resultDto;
+        }
+
         Board board = Board.builder()
-                .userId(boardDto.getUserId())
+                .user(user.get())
                 .title(boardDto.getTitle())
                 .content(boardDto.getContent())
                 .vaccineDose(boardDto.getVaccineDose())
@@ -31,7 +45,10 @@ public class BoardServiceImpl implements BoardService {
                 .build();
         boardRepository.save(board);
 
-        return board;
+        resultDto.setCode(ResultCode.SUCCESS.toString());
+        resultDto.setData(board);
+
+        return resultDto;
     }
 
     @Override
@@ -51,8 +68,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Page<Board> findByUserId(Long userId, Integer page, Integer size) {
-        return boardRepository.findAllByUserIdOrderByBoardIdDesc(userId, PageRequest.of(page, size));
+    public Page<Board> findByUser(User user, Integer page, Integer size) {
+        return boardRepository.findAllByUserOrderByBoardIdDesc(user, PageRequest.of(page, size));
     }
 
     @Override
@@ -65,8 +82,8 @@ public class BoardServiceImpl implements BoardService {
         return boardRepository.findAllByVaccineDoseOrderByBoardIdDesc(vaccineDose, PageRequest.of(page, size));
     }
 
-//    @Override
-//    public Page<Board> findByAge(Integer age, Integer page, Integer size) {
-//        return boardRepository.findAllByAgeOrderByBoardIdDesc(age, PageRequest.of(page, size));
-//    }
+    @Override
+    public Page<Board> findByAge(Integer age, Integer page, Integer size) {
+        return boardRepository.findByUserAge(age, PageRequest.of(page, size));
+    }
 }

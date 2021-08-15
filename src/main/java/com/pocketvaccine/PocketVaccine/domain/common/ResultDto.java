@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Builder
-@Getter
+@Getter @Setter
+@NoArgsConstructor
 @JsonInclude(Include.NON_NULL)
 public class ResultDto<T> {
 
@@ -17,4 +19,14 @@ public class ResultDto<T> {
     private String code;
 
     private String message;
+
+    @Builder
+    public ResultDto(T data, Paginate paginate, String code, String message) {
+
+        this.data = data;
+        this.paginate = paginate;
+        this.code = code;
+        this.message = message;
+
+    }
 }

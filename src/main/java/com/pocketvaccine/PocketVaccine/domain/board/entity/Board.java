@@ -1,15 +1,14 @@
 package com.pocketvaccine.PocketVaccine.domain.board.entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
+import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
 import com.pocketvaccine.PocketVaccine.domain.symptom.entity.Symptom;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -24,19 +23,23 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long boardId;
 
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     private String title;
 
     private String content;
 
     @DateTimeFormat(pattern = "dd.MM.yyyy hh:mm")
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @DateTimeFormat(pattern = "dd.MM.yyyy hh:mm")
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
     private Integer likes;
+
+    private String ageRange;
 
     private Integer vaccineDose;
 
@@ -48,14 +51,15 @@ public class Board {
     private List<Symptom> symptoms;
 
     @Builder
-    public Board(Long userId, String title, String content, Date createdAt,
-                 Integer vaccineDose, VaccineType vaccineType, List<Symptom> symptoms) {
-        this.userId = userId;
+    public Board(User user, String title, String content, Integer vaccineDose, VaccineType vaccineType, Integer likes, String ageRange) {
+        this.user = user;
         this.title = title;
         this.content = content;
-        this.createdAt = createdAt;
+        this.createdAt = LocalDateTime.now();
         this.vaccineDose = vaccineDose;
         this.vaccineType = vaccineType;
+        this.likes = likes;
+        this.ageRange = ageRange;
         this.symptoms = symptoms;
 
     }
