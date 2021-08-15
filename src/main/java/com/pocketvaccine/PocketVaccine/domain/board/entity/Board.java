@@ -38,19 +38,23 @@ public class Board {
 
     private Integer likes;
 
+    private String ageRange;
+
     private Integer vaccineDose;
 
     @Enumerated(EnumType.STRING)
     private VaccineType vaccineType;
 
     @Builder
-    public Board(User user, String title, String content, Integer vaccineDose, VaccineType vaccineType) {
+    public Board(User user, String title, String content, Integer vaccineDose, VaccineType vaccineType, Integer likes, String ageRange) {
         this.user = user;
         this.title = title;
         this.content = content;
         this.createdAt = LocalDateTime.now();
         this.vaccineDose = vaccineDose;
         this.vaccineType = vaccineType;
+        this.likes = likes;
+        this.ageRange = ageRange;
     }
 
 }
