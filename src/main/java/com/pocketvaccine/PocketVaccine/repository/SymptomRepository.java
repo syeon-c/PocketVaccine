@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 public interface SymptomRepository extends JpaRepository<Symptom, SymptomId> {
-    @Query("select b.ageRange, " +
+    @Query("select b.ageRange as ageRange, " +
             "count(case when s.symptomId.symptom='근육통' then 1 end) as countMusclePain, " +
             "count(case when s.symptomId.symptom='발열' then 1 end) as countFever, " +
             "count(case when s.symptomId.symptom='오한' then 1 end) as countChill, " +
