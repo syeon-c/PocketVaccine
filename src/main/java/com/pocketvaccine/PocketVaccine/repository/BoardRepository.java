@@ -18,15 +18,15 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
     Page<Board> findAll(Pageable pageable);
 
-    Page<Board> findAllByUserOrderByBoardIdDesc(User user, PageRequest pageable);
+    Page<Board> findAllByUserOrderByBoardIdDesc(User user, Pageable pageable);
 
-    Page<Board> findAllByVaccineTypeOrderByBoardIdDesc(VaccineType vaccineType, PageRequest pageRequest);
+    Page<Board> findAllByVaccineTypeOrderByBoardIdDesc(VaccineType vaccineType, Pageable pageable);
 
-    Page<Board> findAllByVaccineDoseOrderByBoardIdDesc(Integer vaccineDose, PageRequest pageRequest);
+    Page<Board> findAllByVaccineDoseOrderByBoardIdDesc(Integer vaccineDose, Pageable pageable);
 
 //    Page<Board> findAllByAgeOrderByBoardIdDesc(Integer age, PageRequest pageRequest);
 
     @Query("select b from Board b join b.user u where u.ageRange = :ageRange")
-    Page<Board> findByUserAge(@Param("ageRange") PageRequest pageRequest);
+    Page<Board> findByAgeRange(@Param("ageRange") Pageable pageable);
 
 }
