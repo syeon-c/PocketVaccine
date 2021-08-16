@@ -7,9 +7,12 @@ import com.pocketvaccine.PocketVaccine.domain.common.Paginate;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultCode;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultDto;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultEntity;
+import com.pocketvaccine.PocketVaccine.domain.user.dto.UserDto;
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
 import com.pocketvaccine.PocketVaccine.repository.UserRepository;
+import com.pocketvaccine.PocketVaccine.service.board.BoardLikeService;
 import com.pocketvaccine.PocketVaccine.service.board.BoardService;
+
 import java.util.Optional;
 
 import lombok.RequiredArgsConstructor;
@@ -18,13 +21,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @RequestMapping("/api/boards")
 @RequiredArgsConstructor
 public class BoardController {
 
     private final BoardService boardService;
+
+    private final BoardLikeService boardLikeService;
 
     private final UserRepository userRepository;
 
@@ -73,18 +77,36 @@ public class BoardController {
 
     }
 
-    @PutMapping("/{boardId}")
-    public ResponseEntity update(@PathVariable Long boardId, @RequestBody BoardDto boardDto) {
-       if(boardDto.getTitle() == null || boardDto.getContent() == null) {
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-       }
-        ResultDto<Board> resultDto = boardService.update(boardId, boardDto);
-        return ResultEntity.ok(resultDto);
-    }
+//    @PatchMapping("/{boardId}")
+//    public ResponseEntity update(@PathVariable Long boardId, @RequestBody BoardDto boardDto) {
+//        ResultDto<Board> resultDto = boardService.update(boardId, boardDto);
+//        return ResultEntity.ok(resultDto);
+//    }
 
     @DeleteMapping("/{boardId}")
     public void delete(@PathVariable Long boardId) {
         boardService.delete(boardId);
     }
+
+    @GetMapping("/{boardId}/likes")
+    public ResponseEntity getLikes(@PathVariable Long boardId) {
+        int countLike = 0;
+        countLike = boardLikeService.getLikes(boardId);
+        return new ResponseEntity<>(countLike, HttpStatus.OK);
+    }
+
+    @PostMapping("/{boardId}/likes")
+    public ResponseEntity addLike(@PathVariable Long boardId, @RequestBody UserDto userDto) {
+        ResultDto<Board> resultDto = boardLikeService.addLike(boardId, userDto.getUserId());
+        return ResultEntity.ok(resultDto);
+    }
+
+    @DeleteMapping("/{boardId}/likes/{likeHistoryId}")
+    public void deleteLike(@PathVariable Long boardId, @PathVariable Long likeHistoryId, @RequestBody UserDto userDto) {
+        boardLikeService.deleteLike(boardId, likeHistoryId, userDto.getUserId());
+
+    }
+
+
 
 }

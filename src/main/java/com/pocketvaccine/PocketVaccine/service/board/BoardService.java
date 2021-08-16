@@ -1,7 +1,6 @@
 package com.pocketvaccine.PocketVaccine.service.board;
 
 import com.pocketvaccine.PocketVaccine.domain.board.dto.BoardDto;
-import com.pocketvaccine.PocketVaccine.domain.board.dto.BoardUpdateDto;
 import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultDto;
@@ -13,7 +12,7 @@ public interface BoardService {
 
     <T> ResultDto<T> post(BoardDto boardDto);
 
-    <T> ResultDto<T> update(Long boardId, BoardDto boardDto);
+//    <T> ResultDto<T> update(Long boardId, BoardDto boardDto);
 
     void delete(Long boardId);
 

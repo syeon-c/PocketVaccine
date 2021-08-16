@@ -1,10 +1,13 @@
 package com.pocketvaccine.PocketVaccine.domain.board.dto;
 
 import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
+import com.pocketvaccine.PocketVaccine.domain.board.entity.BoardLike;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import lombok.*;
@@ -32,7 +35,7 @@ public class BoardDto {
 
     private LocalDateTime updatedAt;
 
-    private Integer likes;
+    private Set<BoardLike> likes;
 
     private Integer vaccineDose;
 
@@ -70,6 +73,7 @@ public class BoardDto {
         this.content = entity.getContent();
         this.createdAt = entity.getCreatedAt();
         this.updatedAt = entity.getUpdatedAt();
+
         this.likes = entity.getLikes();
 
         this.vaccineDose = entity.getVaccineDose();
