@@ -9,6 +9,7 @@ public class KakaoUserInfoDto {
 
     private Long id;
 
+    @JsonProperty(value = "properties")
     private KakaoProperty kakaoProperty;
 
     @JsonProperty(value = "kakao_account")

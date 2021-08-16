@@ -95,7 +95,7 @@ public class KakaoLoginServiceImpl implements KakaoLoginService {
 
         // 변경된 정보 업데이트
         user.setUserEmail(kakaoUserInfoDto.getKakaoAccount().getAccountEmail());
-        user.setUserName(kakaoUserInfoDto.getKakaoProperty().getNickName());
+        user.setNickname(kakaoUserInfoDto.getKakaoProperty().getNickName());
         user.setAccessToken(accessToken);
         user.setRefreshToken(token.getRefreshToken());
         userRepository.save(user);

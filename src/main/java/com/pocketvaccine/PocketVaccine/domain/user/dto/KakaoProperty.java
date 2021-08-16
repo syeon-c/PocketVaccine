@@ -10,3 +10,4 @@ public class KakaoProperty {
     private String nickName;
 
 }
+

@@ -1,6 +1,7 @@
 package com.pocketvaccine.PocketVaccine.controlloer;
 
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
+import com.pocketvaccine.PocketVaccine.repository.UserRepository;
 import com.pocketvaccine.PocketVaccine.service.kakaologin.KakaoLoginService;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -40,6 +41,7 @@ public class UserController {
         if (cookie != null) {
             kakaoId = Long.valueOf(cookie.getValue());
             System.out.println("kakaoId : " + kakaoId);
+
         }
 
         if (kakaoId == null) {
