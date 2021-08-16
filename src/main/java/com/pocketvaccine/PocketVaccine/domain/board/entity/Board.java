@@ -61,7 +61,6 @@ public class Board {
         this.likes = likes;
         this.ageRange = ageRange;
         this.symptoms = symptoms;
-
     }
 
 }
