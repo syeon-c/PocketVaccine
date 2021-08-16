@@ -91,6 +91,26 @@ public class Board {
         this.allergy = allergy;
         this.etc = etc;
     }
+
+    public void update(String title, String content, Integer vaccineDose, VaccineType vaccineType,
+                       boolean musclePain, boolean fever, boolean chill, boolean nausea, boolean diarrhea, boolean headache, boolean throatPain, boolean fatigue, boolean allergy, boolean etc) {
+        this.title = title;
+        this.content = content;
+        this.updatedAt = LocalDateTime.now();
+        this.vaccineDose = vaccineDose;
+        this.vaccineType = vaccineType;
+        this.musclePain = musclePain;
+        this.fever = fever;
+        this.chill = chill;
+        this.nausea = nausea;
+        this.diarrhea = diarrhea;
+        this.headache = headache;
+        this.throatPain = throatPain;
+        this.fatigue = fatigue;
+        this.allergy = allergy;
+        this.etc = etc;
+
+    }
 }
 
 

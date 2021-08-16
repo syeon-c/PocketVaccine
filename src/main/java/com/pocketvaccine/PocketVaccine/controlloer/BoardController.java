@@ -14,6 +14,7 @@ import java.util.Optional;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -70,6 +71,15 @@ public class BoardController {
         }
         return ResultEntity.ok(BoardDto.ofEntities(boardList.getContent()), Paginate.setPaginate(boardList));
 
+    }
+
+    @PutMapping("/{boardId}")
+    public ResponseEntity update(@PathVariable Long boardId, @RequestBody BoardDto boardDto) {
+       if(boardDto.getTitle() == null || boardDto.getContent() == null) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+       }
+        ResultDto<Board> resultDto = boardService.update(boardId, boardDto);
+        return ResultEntity.ok(resultDto);
     }
 
     @DeleteMapping("/{boardId}")

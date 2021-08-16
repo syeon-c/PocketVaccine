@@ -1,6 +1,7 @@
 package com.pocketvaccine.PocketVaccine.service.board;
 
 import com.pocketvaccine.PocketVaccine.domain.board.dto.BoardDto;
+import com.pocketvaccine.PocketVaccine.domain.board.dto.BoardUpdateDto;
 import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultCode;
@@ -61,6 +62,25 @@ public class BoardServiceImpl implements BoardService {
         resultDto.setData(board);
 
         return resultDto;
+    }
+
+    @Override
+    public ResultDto<Board> update(Long boardId, BoardDto boardDto) {
+        ResultDto<Board> resultDto = new ResultDto<>();
+
+        Board board = boardRepository.findById(boardId).orElseThrow(() -> new
+                IllegalArgumentException("BOARD_NOT_FOUND"));
+        board.update(boardDto.getTitle(), boardDto.getContent(), boardDto.getVaccineDose(),
+                boardDto.getVaccineType(), boardDto.isMusclePain(), boardDto.isFever(),
+                boardDto.isChill(), boardDto.isNausea(), boardDto.isDiarrhea(),
+                boardDto.isHeadache(), boardDto.isThroatPain(), boardDto.isFatigue(),
+                boardDto.isAllergy(), boardDto.isEtc());
+
+        resultDto.setCode(ResultCode.SUCCESS.toString());
+        resultDto.setData(board);
+
+        return resultDto;
+
     }
 
     @Override
