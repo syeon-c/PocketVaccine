@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface BoardService {
 
-    <T> ResultDto<T> save(BoardDto boardDto);
+    <T> ResultDto<T> post(BoardDto boardDto);
 
     void delete(Long boardId);
 
@@ -25,6 +25,6 @@ public interface BoardService {
 
     Page<Board> findByVaccineDose(Integer vaccineDose, Integer page, Integer size);
 
-    Page<Board> findByAge(Integer page, Integer size);
+    Page<Board> findByAgeRange(String ageRange, Integer page, Integer size);
 
 }

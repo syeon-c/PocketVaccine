@@ -1,6 +1,6 @@
 package com.pocketvaccine.PocketVaccine.domain.symptom.entity;
 
-import com.pocketvaccine.PocketVaccine.domain.symptom.type.SymptomType;
+import com.pocketvaccine.PocketVaccine.domain.board.type.SymptomType;
 import lombok.*;
 
 import javax.persistence.*;

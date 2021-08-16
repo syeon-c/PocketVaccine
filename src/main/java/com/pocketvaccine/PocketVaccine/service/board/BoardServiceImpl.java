@@ -5,11 +5,8 @@ import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultCode;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultDto;
-import com.pocketvaccine.PocketVaccine.domain.symptom.entity.Symptom;
-import com.pocketvaccine.PocketVaccine.domain.symptom.entity.SymptomId;
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
 import com.pocketvaccine.PocketVaccine.repository.BoardRepository;
-import com.pocketvaccine.PocketVaccine.repository.SymptomRepository;
 import com.pocketvaccine.PocketVaccine.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -28,10 +25,8 @@ public class BoardServiceImpl implements BoardService {
 
     final UserRepository userRepository;
 
-    final SymptomRepository symptomRepository;
-
     @Override
-    public ResultDto<Board> save(BoardDto boardDto) {
+    public ResultDto<Board> post(BoardDto boardDto) {
         ResultDto<Board> resultDto = new ResultDto<>();
 
         Optional<User> user = userRepository.findById(boardDto.getUserId());
@@ -45,26 +40,14 @@ public class BoardServiceImpl implements BoardService {
                 .title(boardDto.getTitle())
                 .content(boardDto.getContent())
                 .ageRange(boardDto.getAgeRange())
+                .createdAt(boardDto.getCreatedAt())
+                .likes(0)
                 .vaccineDose(boardDto.getVaccineDose())
                 .vaccineType(boardDto.getVaccineType())
-                .symptoms(boardDto.getSymptoms())
                 .build();
-
-//        SymptomId symptomId = SymptomId.builder()
-//                .boardId(boardDto.getBoardId())
-//                .symptom(symptom.getSymptomId().getSymptom())
-//                .build();
-//
-//        Symptom symptom1 = Symptom.builder()
-//                .symptomId(symptomId)
-//                .build();
-//
-//        board.getSymptoms().add(symptom1);
-//        Symptom symptom1 = new Symptom();
-//        symptom1.setSymptomId(symptomId);
-
         boardRepository.save(board);
-//        symptomRepository.save(symptom1);
+
+
 
         resultDto.setCode(ResultCode.SUCCESS.toString());
         resultDto.setData(board);
@@ -104,7 +87,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Page<Board> findByAge(Integer page, Integer size) {
+    public Page<Board> findByAgeRange(String ageRange, Integer page, Integer size) {
         return boardRepository.findByAgeRange(PageRequest.of(page, size));
     }
 }

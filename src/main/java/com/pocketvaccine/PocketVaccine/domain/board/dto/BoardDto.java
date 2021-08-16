@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.pocketvaccine.PocketVaccine.domain.board.type.SymptomType;
 import com.pocketvaccine.PocketVaccine.domain.symptom.entity.Symptom;
 import lombok.*;
 
@@ -33,6 +34,8 @@ public class BoardDto {
 
     private LocalDateTime updatedAt;
 
+    private Integer likes;
+
     private Integer vaccineDose;
 
     private VaccineType vaccineType;
@@ -50,6 +53,7 @@ public class BoardDto {
         this.content = entity.getContent();
         this.createdAt = entity.getCreatedAt();
         this.updatedAt = entity.getUpdatedAt();
+        this.likes = entity.getLikes();
 
         this.vaccineDose = entity.getVaccineDose();
         this.vaccineType = entity.getVaccineType();
