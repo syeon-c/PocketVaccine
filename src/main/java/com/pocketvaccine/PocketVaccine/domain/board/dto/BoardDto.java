@@ -20,7 +20,7 @@ public class BoardDto {
 
     private Long userId;
 
-    private String userName;
+    private String nickname;
 
     private String ageRange;
 
@@ -63,7 +63,7 @@ public class BoardDto {
         this.boardId = entity.getBoardId();
 
         this.userId = entity.getUser().getUserId();
-        this.userName = entity.getUser().getNickname();
+        this.nickname = entity.getUser().getNickname();
         this.ageRange = entity.getAgeRange();
 
         this.title = entity.getTitle();
