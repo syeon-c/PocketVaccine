@@ -19,7 +19,7 @@ public class User {
     private Long kakaoId;
 
     @Setter
-    private String userName;
+    private String nickname;
 
     @Setter
     private String userEmail;

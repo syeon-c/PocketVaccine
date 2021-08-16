@@ -1,15 +1,16 @@
 package com.pocketvaccine.PocketVaccine.domain.user.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
 public class KakaoAccount {
 
-    String nickName;
-
+    @JsonProperty(value = "email")
     String accountEmail;
 
-    String age;
+    @JsonProperty(value = "age_range")
+    String ageRange;
 
 }

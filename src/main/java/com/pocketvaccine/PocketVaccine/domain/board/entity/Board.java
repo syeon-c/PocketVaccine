@@ -1,6 +1,5 @@
 package com.pocketvaccine.PocketVaccine.domain.board.entity;
 
-
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
 import lombok.*;
@@ -49,6 +48,7 @@ public class Board {
     @Enumerated(EnumType.STRING)
     private VaccineType vaccineType;
 
+    // Symptom
     private boolean musclePain;
 
     private boolean fever;
@@ -80,6 +80,7 @@ public class Board {
         this.ageRange = ageRange;
         this.vaccineDose = vaccineDose;
         this.vaccineType = vaccineType;
+
         this.musclePain = musclePain;
         this.fever = fever;
         this.chill = chill;

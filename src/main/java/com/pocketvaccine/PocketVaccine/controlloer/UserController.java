@@ -1,6 +1,7 @@
 package com.pocketvaccine.PocketVaccine.controlloer;
 
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
+import com.pocketvaccine.PocketVaccine.repository.UserRepository;
 import com.pocketvaccine.PocketVaccine.service.kakaologin.KakaoLoginService;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -10,11 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpClientErrorException;
 
 @Slf4j
 @Controller
+@RequestMapping("/api/kakaologin")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -38,6 +41,7 @@ public class UserController {
         if (cookie != null) {
             kakaoId = Long.valueOf(cookie.getValue());
             System.out.println("kakaoId : " + kakaoId);
+
         }
 
         if (kakaoId == null) {

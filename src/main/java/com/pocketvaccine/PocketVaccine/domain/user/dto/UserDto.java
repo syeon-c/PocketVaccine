@@ -24,7 +24,7 @@ public class UserDto {
     protected UserDto(User entity) {
         this.userId = entity.getUserId();
         this.kakaoId = entity.getKakaoId();
-        this.userName = entity.getUserName();
+        this.userName = entity.getNickname();
         this.userEmail = entity.getUserEmail();
         this.ageRange = entity.getAgeRange();
     }
