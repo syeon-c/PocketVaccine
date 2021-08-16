@@ -15,9 +15,9 @@ import java.util.List;
 public class SymptomController {
 
     private final SymptomService symptomService;
-    
+
     @GetMapping("/{vaccineDose}")
-    public ResponseEntity<List<SymptomMapping>> showSymptoms(@PathVariable int vaccineDose) {
+    public ResponseEntity<List<SymptomMapping>> showSymptoms(@PathVariable Integer vaccineDose) {
         ResponseEntity<List<SymptomMapping>> symptomList = null;
 
         try {

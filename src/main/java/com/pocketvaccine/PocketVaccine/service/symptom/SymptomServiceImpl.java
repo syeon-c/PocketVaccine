@@ -15,7 +15,7 @@ public class SymptomServiceImpl implements SymptomService {
     final SymptomRepository symptomRepository;
 
     @Override
-    public List<SymptomMapping> showSymptom(int vaccineDose) {
+    public List<SymptomMapping> showSymptom(Integer vaccineDose) {
         return symptomRepository.findSymptom(vaccineDose);
     }
 

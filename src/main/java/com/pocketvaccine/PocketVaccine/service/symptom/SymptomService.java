@@ -5,7 +5,7 @@ import com.pocketvaccine.PocketVaccine.domain.symptom.entity.SymptomMapping;
 import java.util.List;
 
 public interface SymptomService {
+    List<SymptomMapping> showSymptom(Integer vaccineDose);
 
-    List<SymptomMapping> showSymptom(int vaccineDose);
 
 }

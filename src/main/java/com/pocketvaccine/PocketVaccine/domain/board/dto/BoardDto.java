@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.pocketvaccine.PocketVaccine.domain.board.type.SymptomType;
-import com.pocketvaccine.PocketVaccine.domain.symptom.entity.Symptom;
 import lombok.*;
 
 @Builder
@@ -40,7 +38,26 @@ public class BoardDto {
 
     private VaccineType vaccineType;
 
-    private List<Symptom> symptoms;
+    // Symptom
+    private boolean musclePain;
+
+    private boolean fever;
+
+    private boolean chill;
+
+    private boolean nausea;
+
+    private boolean diarrhea;
+
+    private boolean headache;
+
+    private boolean throatPain;
+
+    private boolean fatigue;
+
+    private boolean allergy;
+
+    private boolean etc;
 
     protected BoardDto(Board entity) {
         this.boardId = entity.getBoardId();
@@ -58,7 +75,17 @@ public class BoardDto {
         this.vaccineDose = entity.getVaccineDose();
         this.vaccineType = entity.getVaccineType();
 
-        this.symptoms = entity.getSymptoms();
+        this.musclePain = entity.isMusclePain();
+        this.fever = entity.isFever();
+        this.chill = entity.isChill();
+        this.nausea = entity.isNausea();
+        this.diarrhea = entity.isDiarrhea();
+        this.headache = entity.isHeadache();
+        this.throatPain = entity.isThroatPain();
+        this.fatigue = entity.isFatigue();
+        this.allergy = entity.isAllergy();
+        this.etc = entity.isEtc();
+
     }
 
     public static BoardDto ofEntity(Board entity) {
