@@ -4,6 +4,8 @@ package com.pocketvaccine.PocketVaccine.domain.board.entity;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -30,9 +32,11 @@ public class Board {
 
     private String content;
 
+    @CreationTimestamp
     @DateTimeFormat(pattern = "dd.MM.yyyy hh:mm")
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @DateTimeFormat(pattern = "dd.MM.yyyy hh:mm")
     private LocalDateTime updatedAt;
 
