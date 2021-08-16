@@ -1,29 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>나만의 게시판 만들기!</title>
-</head>
-<body style="text-align: center">
-안녕하세요 게시판 입니다 로그인을 해주세요:)
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:if="${user != null}">
+    <h1>로그인 성공</h1>
 
-<form action="/login.do" method="post">
     <div>
-        <label for="userID">아이디: </label>
-        <input id="userID" name="userID" type="text">
+        <p> id : <span th:text="${user.getKakaoId()}"></span></p>
+        <p> 닉네임 : <span th:text="${user.getNickName()}"></span></p>
+        <p> 이메일 : <span th:text="${user.getUserEmail()}"></span></p>
+        <p> Access Token : <span th:text="${user.getAccessToken()}"></span></p>
+        <p> Refresh Token : <span th:text="${user.getRefreshToken()}"></span></p>
     </div>
-    <div>
-        <label for="password">패스워드: </label>
-        <input id="password" name="password" type="password">
-    </div>
-    <input type="submit" value="로그인하기">
-</form>
-<p th:text="${loginMessage}" style="color: red"></p>
 
+    <input type="button" value="로그아웃"
+           onclick="location.href='https://kauth.kakao.com/oauth/logout?' +
+              'client_id=9a14ba30e24aec9b0b85c4c47c83bcab&logout_redirect_uri=http://localhost:8080/api/kakaologout'">
 
-<p>처음이신가요? 회원가입은 여기서 해주세요!</p>
-<input type="button" onclick="location.href='/login';" value="회원가입하기"></body>
+</div>
+
+<script th:src="@{/js/jquery.js}"></script>
 </body>
 </html>

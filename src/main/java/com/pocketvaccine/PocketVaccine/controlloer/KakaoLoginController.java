@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/kakaologin")
 @RequiredArgsConstructor
 public class KakaoLoginController {
     private final KakaoLoginService kakaoLoginService;

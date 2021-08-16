@@ -1,6 +1,7 @@
 package com.pocketvaccine.PocketVaccine.domain.board.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pocketvaccine.PocketVaccine.domain.board.type.SymptomType;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 import com.pocketvaccine.PocketVaccine.domain.symptom.entity.Symptom;
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
