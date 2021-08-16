@@ -40,14 +40,22 @@ public class BoardServiceImpl implements BoardService {
                 .title(boardDto.getTitle())
                 .content(boardDto.getContent())
                 .ageRange(boardDto.getAgeRange())
-                .createdAt(boardDto.getCreatedAt())
+//                .createdAt(boardDto.getCreatedAt())
                 .likes(0)
                 .vaccineDose(boardDto.getVaccineDose())
                 .vaccineType(boardDto.getVaccineType())
+                .musclePain(boardDto.isMusclePain())
+                .fever(boardDto.isFever())
+                .chill(boardDto.isChill())
+                .nausea(boardDto.isNausea())
+                .diarrhea(boardDto.isDiarrhea())
+                .headache(boardDto.isHeadache())
+                .throatPain(boardDto.isThroatPain())
+                .fatigue(boardDto.isFatigue())
+                .allergy(boardDto.isAllergy())
+                .etc(boardDto.isEtc())
                 .build();
         boardRepository.save(board);
-
-
 
         resultDto.setCode(ResultCode.SUCCESS.toString());
         resultDto.setData(board);

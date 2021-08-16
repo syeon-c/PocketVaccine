@@ -9,6 +9,18 @@ public interface SymptomMapping {
 
     Long getCountChill();
 
+    Long getCountNausea();
+
+    Long getCountDiarrhea();
+
     Long getCountHeadache();
+
+    Long getCountThroatPain();
+
+    Long getCountFatigue();
+
+    Long getCountAllergy();
+
+    Long getCountEtc();
 
 }
