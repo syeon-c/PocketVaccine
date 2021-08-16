@@ -7,7 +7,6 @@ import com.pocketvaccine.PocketVaccine.domain.common.Paginate;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultCode;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultDto;
 import com.pocketvaccine.PocketVaccine.domain.common.ResultEntity;
-import com.pocketvaccine.PocketVaccine.domain.symptom.entity.Symptom;
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
 import com.pocketvaccine.PocketVaccine.repository.UserRepository;
 import com.pocketvaccine.PocketVaccine.service.board.BoardService;
