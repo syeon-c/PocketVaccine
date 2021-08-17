@@ -1,0 +1,22 @@
+spring:
+  jpa:
+    database: mysql
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172-31-34-73:3306/pocketvaccine?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    username: root
+    password: 20110518
+
+kakao:
+  auth-token-uri: https://kauth.kakao.com/oauth/token
+  rest-api-key: 9a14ba30e24aec9b0b85c4c47c83bcab
+  redirect-uri: http://18.221.196.18:8080/api/kakaologin
+  user-me-uri: https://kapi.kakao.com/v2/user/me
+  access-token-info-uri: https://kapi.kakao.com/v1/user/access_token_info
