@@ -10,8 +10,8 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://172-31-34-73:3306/pocketvaccine?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
-    username: root
+    url: jdbc:mysql://database-1.chzhhyf6xvc5.us-east-2.rds.amazonaws.com:3306/pocketvaccine
+    username: database-1
     password: 20110518
 
 kakao:
