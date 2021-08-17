@@ -13,6 +13,8 @@ import com.pocketvaccine.PocketVaccine.repository.UserRepository;
 import com.pocketvaccine.PocketVaccine.service.board.BoardLikeService;
 import com.pocketvaccine.PocketVaccine.service.board.BoardService;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import lombok.RequiredArgsConstructor;
@@ -90,9 +92,11 @@ public class BoardController {
 
     @GetMapping("/{boardId}/likes")
     public ResponseEntity getLikes(@PathVariable Long boardId) {
+        Map<String, Integer> map = new HashMap<>();
         int countLike = 0;
         countLike = boardLikeService.getLikes(boardId);
-        return new ResponseEntity<>(countLike, HttpStatus.OK);
+        map.put("countLike", countLike);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
     @PostMapping("/{boardId}/likes")
