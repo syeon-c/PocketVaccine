@@ -39,8 +39,6 @@ public class Board {
     @DateTimeFormat(pattern = "dd.MM.yyyy hh:mm")
     private LocalDateTime updatedAt;
 
-    private Integer likes;
-
     private String ageRange;
 
     private Integer vaccineDose;
@@ -76,7 +74,6 @@ public class Board {
         this.title = title;
         this.content = content;
         this.createdAt = LocalDateTime.now();
-        this.likes = likes;
         this.ageRange = ageRange;
         this.vaccineDose = vaccineDose;
         this.vaccineType = vaccineType;

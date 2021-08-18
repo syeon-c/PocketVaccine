@@ -41,7 +41,6 @@ public class BoardServiceImpl implements BoardService {
                 .content(boardDto.getContent())
                 .ageRange(boardDto.getAgeRange())
                 .createdAt(boardDto.getCreatedAt())
-                .likes(0)
                 .vaccineDose(boardDto.getVaccineDose())
                 .vaccineType(boardDto.getVaccineType())
                 .musclePain(boardDto.isMusclePain())

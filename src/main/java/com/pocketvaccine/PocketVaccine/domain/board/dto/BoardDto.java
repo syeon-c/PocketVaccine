@@ -31,9 +31,7 @@ public class BoardDto {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
-
-    private Integer likes;
-
+    
     private Integer vaccineDose;
 
     private VaccineType vaccineType;
@@ -70,7 +68,6 @@ public class BoardDto {
         this.content = entity.getContent();
         this.createdAt = entity.getCreatedAt();
         this.updatedAt = entity.getUpdatedAt();
-        this.likes = entity.getLikes();
 
         this.vaccineDose = entity.getVaccineDose();
         this.vaccineType = entity.getVaccineType();
