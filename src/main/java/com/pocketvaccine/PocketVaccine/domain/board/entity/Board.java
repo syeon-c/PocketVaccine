@@ -1,5 +1,6 @@
 package com.pocketvaccine.PocketVaccine.domain.board.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pocketvaccine.PocketVaccine.domain.board.type.VaccineType;
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
 import lombok.*;
@@ -9,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 
 @Entity
@@ -39,6 +41,10 @@ public class Board {
     @DateTimeFormat(pattern = "dd.MM.yyyy hh:mm")
     private LocalDateTime updatedAt;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    private Set<BoardLike> likes;
+
     private String ageRange;
 
     private Integer vaccineDose;
@@ -68,7 +74,7 @@ public class Board {
     private boolean etc;
 
     @Builder
-    public Board(User user, String title, String content, Integer likes, String ageRange, Integer vaccineDose, VaccineType vaccineType,
+    public Board(User user, String title, String content, Set<BoardLike> likes, String ageRange, Integer vaccineDose, VaccineType vaccineType,
                  boolean musclePain, boolean fever, boolean chill, boolean nausea, boolean diarrhea, boolean headache, boolean throatPain, boolean fatigue, boolean allergy, boolean etc) {
         this.user = user;
         this.title = title;

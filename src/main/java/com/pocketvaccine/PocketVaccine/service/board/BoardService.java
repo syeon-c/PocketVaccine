@@ -12,6 +12,8 @@ public interface BoardService {
 
     <T> ResultDto<T> post(BoardDto boardDto);
 
+//    <T> ResultDto<T> update(Long boardId, BoardDto boardDto);
+
     void delete(Long boardId);
 
     Optional<Board> findById(Long boardId);
