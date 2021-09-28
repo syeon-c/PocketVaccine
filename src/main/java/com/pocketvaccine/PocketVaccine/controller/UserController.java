@@ -1,4 +1,4 @@
-package com.pocketvaccine.PocketVaccine.controlloer;
+package com.pocketvaccine.PocketVaccine.controller;
 
 import com.pocketvaccine.PocketVaccine.domain.user.entity.User;
 import com.pocketvaccine.PocketVaccine.service.kakaologin.KakaoLoginService;

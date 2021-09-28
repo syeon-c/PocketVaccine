@@ -1,10 +1,7 @@
-package com.pocketvaccine.PocketVaccine.controlloer;
+package com.pocketvaccine.PocketVaccine.controller;
 
-import com.pocketvaccine.PocketVaccine.domain.user.dto.KakaoToken;
 import com.pocketvaccine.PocketVaccine.service.kakaologin.KakaoLoginService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

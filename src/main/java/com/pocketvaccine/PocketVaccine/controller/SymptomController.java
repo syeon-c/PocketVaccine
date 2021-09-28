@@ -1,4 +1,4 @@
-package com.pocketvaccine.PocketVaccine.controlloer;
+package com.pocketvaccine.PocketVaccine.controller;
 
 import com.pocketvaccine.PocketVaccine.domain.symptom.entity.SymptomMapping;
 import com.pocketvaccine.PocketVaccine.service.symptom.SymptomService;

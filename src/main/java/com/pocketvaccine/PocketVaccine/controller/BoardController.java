@@ -1,4 +1,4 @@
-package com.pocketvaccine.PocketVaccine.controlloer;
+package com.pocketvaccine.PocketVaccine.controller;
 
 import com.pocketvaccine.PocketVaccine.domain.board.dto.BoardDto;
 import com.pocketvaccine.PocketVaccine.domain.board.entity.Board;
@@ -78,12 +78,6 @@ public class BoardController {
         return ResultEntity.ok(BoardDto.ofEntities(boardList.getContent()), Paginate.setPaginate(boardList));
 
     }
-
-//    @PatchMapping("/{boardId}")
-//    public ResponseEntity update(@PathVariable Long boardId, @RequestBody BoardDto boardDto) {
-//        ResultDto<Board> resultDto = boardService.update(boardId, boardDto);
-//        return ResultEntity.ok(resultDto);
-//    }
 
     @DeleteMapping("/{boardId}")
     public void delete(@PathVariable Long boardId) {

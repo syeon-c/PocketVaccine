@@ -74,7 +74,7 @@ public class Board {
     private boolean etc;
 
     @Builder
-    public Board(User user, String title, String content, Set<BoardLike> likes, String ageRange, Integer vaccineDose, VaccineType vaccineType,
+    public Board(User user, String title, String content, Set<BoardLike> likes, String ageRange, LocalDateTime createdAt, Integer vaccineDose, VaccineType vaccineType,
                  boolean musclePain, boolean fever, boolean chill, boolean nausea, boolean diarrhea, boolean headache, boolean throatPain, boolean fatigue, boolean allergy, boolean etc) {
         this.user = user;
         this.title = title;
