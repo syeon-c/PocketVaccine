@@ -16,7 +16,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 
 @Repository
-public interface BoardRepository extends JpaRepository<Board, Long>, JpaSpecificationExecutor<BoardDto> {
+public interface BoardRepository extends JpaRepository<Board, Long> {
 
     Page<Board> findAll(Pageable pageable);
 
