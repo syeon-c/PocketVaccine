@@ -104,7 +104,4 @@ public class BoardController {
         boardLikeService.deleteLike(boardId, likeHistoryId, userDto.getUserId());
 
     }
-
-
-
 }

@@ -17,6 +17,6 @@ spring:
 kakao:
   auth-token-uri: https://kauth.kakao.com/oauth/token
   rest-api-key: 9a14ba30e24aec9b0b85c4c47c83bcab
-  redirect-uri: http://ec2-18-221-196-18.us-east-2.compute.amazonaws.com:8080/api/kakologin
+  redirect-uri: http://ec2-3-136-31-1.us-east-2.compute.amazonaws.com:8080/api/kakologin
   user-me-uri: https://kapi.kakao.com/v2/user/me
   access-token-info-uri: https://kapi.kakao.com/v1/user/access_token_info
