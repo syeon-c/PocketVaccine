@@ -12,7 +12,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://root.chzhhyf6xvc5.us-east-2.rds.amazonaws.com:3306/sys
     username: admin
-    password: 20110518
+    password:
 
 kakao:
   auth-token-uri: https://kauth.kakao.com/oauth/token
